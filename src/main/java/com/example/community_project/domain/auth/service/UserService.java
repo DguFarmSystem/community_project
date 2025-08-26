@@ -3,13 +3,16 @@ package com.example.community_project.domain.auth.service;
 import com.example.community_project.domain.auth.dto.request.SignInRequestDTO;
 import com.example.community_project.domain.auth.dto.request.SignUpRequestDTO;
 import com.example.community_project.domain.auth.dto.response.SignInResponseDTO;
+import com.example.community_project.domain.auth.dto.response.TestDTO;
 import com.example.community_project.domain.auth.entity.User;
 import com.example.community_project.domain.auth.repository.UserRepository;
 import com.example.community_project.global.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -46,5 +49,23 @@ public class UserService {
         String refresh = jwtProvider.generateRefreshToken(user.getUserId());
 
         return new SignInResponseDTO(access, refresh);
+    }
+
+    @Transactional
+    public void softDeleteUser(Long userId) {
+        User user = userRepository.findByUserIdAndDeletedFalse(userId)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다.")
+                );
+
+        user.delete(); //soft delete
+    }
+
+    public TestDTO getMyName(Long userId) {
+        User user = userRepository.findByUserIdAndDeletedFalse(userId)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다.")
+                );
+        return new TestDTO(user.getName());
     }
 }
