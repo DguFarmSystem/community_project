@@ -1,5 +1,3 @@
-// frontend/pages/index.js
-
 import React from 'react';
 import Link from 'next/link';
 
@@ -9,11 +7,11 @@ export default function Home() {
             <h1>커뮤니티 메인 페이지입니다.</h1>
             <p>로그인 또는 회원가입을 해주세요.</p>
             <Link href="/login">
-                <a>로그인</a>
+                로그인
             </Link>
             <br />
             <Link href="/signup">
-                <a>회원가입</a>
+                회원가입
             </Link>
         </div>
     );
