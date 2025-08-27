@@ -1,98 +1,75 @@
-// frontend/app/login/page.js
+"use client";
 
-import React from 'react';
-
-// Next.js의 Link 컴포넌트를 임포트하여 페이지 이동을 처리
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import styles from './login.module.css';
 
 export default function LoginPage() {
-    return (
-        <div style={styles.container}>
-            <h1 style={styles.title}>Farm System Community</h1>
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
 
-            <div style={styles.formContainer}>
-                {/* 아이디 입력 필드 */}
-                <label style={styles.label}>아이디</label>
+    const handleLogin = async (e) => {
+        e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
+
+        // 이 부분에서 백엔드 API를 호출하여 로그인 처리를 합니다!!!!!!
+        // 임시로 성공/실패 로직을 작성해 두었습니다!!!!!!
+        try {
+            // 실제 API 호출 (예시)
+            // const response = await fetch('/api/login', {
+            //  method: 'POST',
+            //  headers: {
+            //    'Content-Type': 'application/json',
+            //  },
+            //  body: JSON.stringify({ username, password }),
+            // });
+
+            // const data = await response.json();
+
+            // if (data.success) {
+            if (username === 'test' && password === '1234') { // 임시 로그인 성공 조건
+                alert('로그인 성공!');
+                router.push('/'); // 로그인 성공 시 메인 페이지로 이동
+            } else {
+                alert('로그인 실패! 아이디 또는 비밀번호를 확인해주세요.');
+            }
+        } catch (error) {
+            console.error("로그인 중 에러 발생:", error);
+            alert('로그인 처리 중 문제가 발생했습니다.');
+        }
+    };
+
+    return (
+        <div className={styles.container}>
+            <h1 className={styles.title}>Farm System Community</h1>
+
+            <form onSubmit={handleLogin} className={styles.formContainer}>
+                <label className={styles.label}>아이디</label>
                 <input
                     type="text"
-                    style={styles.input}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className={styles.input}
                     placeholder="아이디를 입력하세요"
                 />
 
-                {/* 비밀번호 입력 필드 */}
-                <label style={styles.label}>비밀번호</label>
+                <label className={styles.label}>비밀번호</label>
                 <input
                     type="password"
-                    style={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={styles.input}
                     placeholder="비밀번호를 입력하세요"
                 />
 
-                {/* 로그인 버튼 */}
-                <button style={styles.loginButton}>로그인</button>
+                {/* 로그인 버튼을 <button> 태그로 변경하고, form의 onSubmit을 통해 함수 실행 */}
+                <button type="submit" className={styles.loginButton}>로그인</button>
 
-                {/* 회원가입 링크 */}
-                {/* Link 컴포넌트를 사용하여 페이지 이동 시 새로고침 방지 */}
                 <Link href="/signup">
-                    <p style={styles.signupText}>회원가입</p>
+                    <p className={styles.signupText}>회원가입</p>
                 </Link>
-            </div>
+            </form>
         </div>
     );
 }
-
-// 간단한 인라인 스타일
-// 나중에는 CSS 모듈이나 TailwindCSS로 변경하는 것을 권장합니다.
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        backgroundColor: '#f5f5f5',
-        fontFamily: 'sans-serif',
-    },
-    title: {
-        color: '#388e3c', // 녹색
-        marginBottom: '2rem',
-    },
-    formContainer: {
-        width: '300px',
-        padding: '2rem',
-        backgroundColor: '#fff',
-        borderRadius: '10px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    label: {
-        alignSelf: 'flex-start',
-        marginBottom: '0.5rem',
-        color: '#555',
-        fontWeight: 'bold',
-    },
-    input: {
-        width: '100%',
-        padding: '0.75rem',
-        marginBottom: '1rem',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-    },
-    loginButton: {
-        width: '100%',
-        padding: '0.75rem',
-        backgroundColor: '#4caf50',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        marginTop: '1rem',
-    },
-    signupText: {
-        marginTop: '1.5rem',
-        color: '#888',
-        textDecoration: 'none',
-        cursor: 'pointer',
-    },
-};
