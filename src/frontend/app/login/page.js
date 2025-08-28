@@ -29,14 +29,14 @@ export default function LoginPage() {
 
             // if (data.success) {
             if (username === 'test' && password === '1234') { // Temporary login success condition
-                alert('Login!');
+                alert('로그인!');
                 router.push('/'); // Redirects to the main page on successful login
             } else {
-                alert('Login FAILED. Please check your ID or password.');
+                alert('아이디나 비밀번호가 일치하지 않습니다.');
             }
         } catch (error) {
-            console.error("Login ERROR:", error);
-            alert('There is a problem in Login.');
+            console.error("로그인 오류:", error);
+            alert('로그인 중에 오류가 생겼습니다. 다시 시도해주세요.');
         }
     };
 
@@ -45,28 +45,28 @@ export default function LoginPage() {
             <h1 className={styles.title}>Farm System Community</h1>
 
             <form onSubmit={handleLogin} className={styles.formContainer}>
-                <label className={styles.label}>ID</label>
+                <label className={styles.label}>아이디</label>
                 <input
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     className={styles.input}
-                    placeholder="Enter your ID"
+                    placeholder="아이디를 입력하세요"
                 />
 
-                <label className={styles.label}>PassWord</label>
+                <label className={styles.label}>비밀번호</label>
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className={styles.input}
-                    placeholder="Enter your password"
+                    placeholder="비밀번호를 입력하세요"
                 />
 
-                <button type="submit" className={styles.loginButton}>Login</button>
+                <button type="submit" className={styles.loginButton}>로그인</button>
 
                 <Link href="/signup" className={styles.signupText}>
-                    SignUp
+                    회원가입
                 </Link>
             </form>
         </div>
