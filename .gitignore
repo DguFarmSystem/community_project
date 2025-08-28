@@ -1,3 +1,18 @@
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Compiled class file ###
+*.class
+
+### Log file ###
+*.log
+
+### BlueJ files ###
+*.ctxt
+
 # Default ignored files
 /shelf/
 /workspace.xml
@@ -8,3 +23,11 @@
 /dataSources.local.xml
 
 application.yml
+application-local.yml
+
+### Windows ###
+Thumbs.db
+
+### Gradle ###
+.gradle
+build/
