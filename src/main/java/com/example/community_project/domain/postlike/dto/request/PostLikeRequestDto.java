@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class PostLikeRequestDto {
 
     @NotBlank(message = "게시글 ID 값이 비어있습니다.")

@@ -7,12 +7,10 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class PostLikeResponseDto {
 
     @Getter
     @NoArgsConstructor
-    @RequiredArgsConstructor
     public static class Data {
         private boolean liked;
         private long likeCount;

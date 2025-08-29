@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 @Table(name="post_likes", uniqueConstraints = {
         @UniqueConstraint(
