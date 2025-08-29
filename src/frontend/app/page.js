@@ -3,9 +3,9 @@ export default function HomePage() {
     return (
         <div>
             <h1>WELCOME!</h1>
-            <Link href="/login">Login</Link>
+            <Link href="/login">로그인</Link>
             <br />
-            <Link href="/signup">Singup</Link>
+            <Link href="/signup">회원가입</Link>
         </div>
     );
 }
