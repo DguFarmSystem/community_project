@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ljm11\\source\\repos\\community_project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\signup\\page.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\app\\signup\\page.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\Source\\Repos\\community_project\\src\\frontend\\app\\signup\\signup.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\app\\signup\\signup.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\login\\page.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\app\\login\\page.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\login\\login.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\app\\login\\login.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\layout.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\app\\layout.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\pages\\api\\hello.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\pages\\api\\hello.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\frontend\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "signup.module.css",
+              "DocumentMoniker": "C:\\Users\\ljm11\\Source\\Repos\\community_project\\src\\frontend\\app\\signup\\signup.module.css",
+              "RelativeDocumentMoniker": "src\\frontend\\app\\signup\\signup.module.css",
+              "ToolTip": "C:\\Users\\ljm11\\Source\\Repos\\community_project\\src\\frontend\\app\\signup\\signup.module.css",
+              "RelativeToolTip": "src\\frontend\\app\\signup\\signup.module.css",
+              "ViewState": "AgIAADcAAAAAAAAAAAAswE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-28T05:18:10.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "page.js",
+              "DocumentMoniker": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\signup\\page.js",
+              "RelativeDocumentMoniker": "src\\frontend\\app\\signup\\page.js",
+              "ToolTip": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\signup\\page.js",
+              "RelativeToolTip": "src\\frontend\\app\\signup\\page.js",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwCwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-28T05:17:52.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "page.js",
+              "DocumentMoniker": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\login\\page.js",
+              "RelativeDocumentMoniker": "src\\frontend\\app\\login\\page.js",
+              "ToolTip": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\login\\page.js",
+              "RelativeToolTip": "src\\frontend\\app\\login\\page.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-27T07:12:48.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "login.module.css",
+              "DocumentMoniker": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\login\\login.module.css",
+              "RelativeDocumentMoniker": "src\\frontend\\app\\login\\login.module.css",
+              "ToolTip": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\login\\login.module.css",
+              "RelativeToolTip": "src\\frontend\\app\\login\\login.module.css",
+              "ViewState": "AgIAACAAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-27T07:22:26.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "layout.js",
+              "DocumentMoniker": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\layout.js",
+              "RelativeDocumentMoniker": "src\\frontend\\app\\layout.js",
+              "ToolTip": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\app\\layout.js",
+              "RelativeToolTip": "src\\frontend\\app\\layout.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-27T08:53:52.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "hello.js",
+              "DocumentMoniker": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\pages\\api\\hello.js",
+              "RelativeDocumentMoniker": "src\\frontend\\pages\\api\\hello.js",
+              "ToolTip": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\pages\\api\\hello.js",
+              "RelativeToolTip": "src\\frontend\\pages\\api\\hello.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-27T08:44:38.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\package.json",
+              "RelativeDocumentMoniker": "src\\frontend\\package.json",
+              "ToolTip": "C:\\Users\\ljm11\\source\\repos\\community_project\\src\\frontend\\package.json",
+              "RelativeToolTip": "src\\frontend\\package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-27T07:36:00.311Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

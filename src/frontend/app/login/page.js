@@ -29,8 +29,8 @@ export default function LoginPage() {
 
             // if (data.success) {
             if (username === 'test' && password === '1234') { // Temporary login success condition
-                alert('로그인!');
-                router.push('/'); // Redirects to the main page on successful login
+                alert('로그인 성공!');
+                router.push('/board'); // Redirects to the main page on successful login
             } else {
                 alert('아이디나 비밀번호가 일치하지 않습니다.');
             }
