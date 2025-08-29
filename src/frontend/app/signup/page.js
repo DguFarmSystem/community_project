@@ -33,7 +33,7 @@ export default function SignupPage() {
 
         try {
             alert('회원가입 성공!');
-            router.push('/login');
+            router.push('/');
         } catch (error) {
             console.error("회원가입 중 에러 발생:", error);
             alert('회원가입 처리 중 문제가 발생했습니다. 다시 시도해주세요.');
@@ -84,7 +84,7 @@ export default function SignupPage() {
                 />
 
                 <button type="submit" className={styles.signupButton}>가입하기</button>
-                <Link href="/login" className={styles.linkText}>로그인 페이지로 돌아가기</Link>
+                <Link href="/" className={styles.linkText}>로그인 페이지로 돌아가기</Link>
             </form>
         </div>
     );
