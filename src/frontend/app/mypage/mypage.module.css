@@ -98,7 +98,6 @@
   background-color: #f9f9f9;
 }
 
-/* --- 내가 쓴 게시글 스타일 (기존 코드 유지) --- */
 .listTitle {
   font-size: 1.2rem;
   font-weight: bold;
@@ -153,8 +152,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* 블러 처리 대신 반투명 검은색 배경 */
-  backdrop-filter: blur(5px); /* 블러 효과 */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
