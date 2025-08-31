@@ -1,9 +1,8 @@
-// frontend/app/board/[postId]/edit/page.js
-
 "use client";
 
 import React, { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import styles from './edit.module.css';
 
 // 임시 게시글 데이터 (비밀번호 포함)
@@ -23,62 +22,89 @@ export default function EditPostPage() {
   const [password, setPassword] = useState('');
   const [content, setContent] = useState(post ? post.content : '');
   const [error, setError] = useState('');
+  const [isPasswordVerified, setIsPasswordVerified] = useState(false); // 새로운 상태 추가
 
   if (!post) {
     return <div className={styles.container}>게시글을 찾을 수 없습니다.</div>;
   }
 
-  const handleEdit = (e) => {
+  const handlePasswordCheck = (e) => {
     e.preventDefault();
     setError('');
 
-    // 1. 비밀번호 확인
-    if (password !== post.password) {
+    if (password === post.password) {
+      setIsPasswordVerified(true);
+      alert('비밀번호가 확인되었습니다. 게시글을 수정할 수 있습니다.');
+    } else {
       setError('비밀번호가 일치하지 않습니다.');
-      return;
     }
+  };
 
-    // 2. 게시글 내용 수정 (임시 로직)
-    // 실제로는 백엔드 API를 호출하여 수정 처리를 해야 합니다.
+  const handleSave = (e) => {
+    e.preventDefault();
+
     console.log(`게시글 ${postId} 수정 완료!`);
     console.log('새로운 내용:', content);
 
     alert('게시글이 성공적으로 수정되었습니다.');
-    router.push(`/board/${postId}`); // 수정 후 상세 페이지로 이동
+    router.push(`/board/${postId}`);
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>게시글 수정</h1>
-      <form onSubmit={handleEdit} className={styles.formContainer}>
-        <label className={styles.label}>제목</label>
-        <input 
-          type="text"
-          value={post.title}
-          className={styles.input}
-          readOnly // 제목 수정 불가
-        />
+      <h1 className={styles.title}>제목</h1>
+      <p className={styles.postInfo}>
+        <span className={styles.author}>{post.author}</span>
+        <span className={styles.date}>{post.date}</span>
+      </p>
+      <p className={styles.postContent}>{post.content}</p>
 
-        <label className={styles.label}>비밀번호 확인</label>
-        <input 
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={styles.input}
-          placeholder="비밀번호를 입력하세요"
-        />
-        {error && <p className={styles.errorText}>{error}</p>}
+      <hr className={styles.divider} />
 
-        <label className={styles.label}>내용</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className={styles.textarea}
-          rows="10"
-        ></textarea>
-        
-        <button type="submit" className={styles.submitButton}>수정 완료</button>
-      </form>
+      {/* 비밀번호 확인 단계 */}
+      {!isPasswordVerified && (
+        <form onSubmit={handlePasswordCheck} className={styles.passwordForm}>
+          <label className={styles.label}>비밀번호</label>
+          <input 
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={styles.input}
+            placeholder="비밀번호를 입력하세요"
+          />
+          {error && <p className={styles.errorText}>{error}</p>}
+          <button type="submit" className={styles.submitButton}>수정</button>
+        </form>
+      )}
+
+      {/* 수정 폼 (비밀번호 확인 후 나타남) */}
+      {isPasswordVerified && (
+        <form onSubmit={handleSave} className={styles.editForm}>
+          <label className={styles.label}>내용</label>
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className={styles.textarea}
+            rows="10"
+          ></textarea>
+          <button type="submit" className={styles.saveButton}>수정 완료</button>
+        </form>
+      )}
+
+      {/* 하단 내비게이션 바 */}
+      <nav className={styles.bottomNav}>
+        <Link href="/board" className={styles.navButton}>
+          <span className={styles.navIcon}>📌</span>
+          <span>Post</span>
+        </Link>
+        <Link href="/mypage" className={styles.navButton}>
+          <span className={styles.navIcon}>👤</span>
+          <span>Mypage</span>
+        </Link>
+        <Link href="/board/write" className={styles.navButton}>
+          <span className={styles.navIcon}>✏️</span>
+        </Link>
+      </nav>
     </div>
   );
 }
