@@ -5,10 +5,12 @@ import com.example.community_project.domain.auth.dto.request.SignInRequestDTO;
 import com.example.community_project.domain.auth.dto.request.SignUpRequestDTO;
 import com.example.community_project.domain.auth.dto.response.SignInResponseDTO;
 import com.example.community_project.domain.auth.dto.response.TestDTO;
+
 import com.example.community_project.domain.auth.entity.User;
 import com.example.community_project.domain.auth.repository.UserRepository;
 import com.example.community_project.global.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -19,16 +21,19 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.concurrent.TimeUnit;
 
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+
     private final StringRedisTemplate redisTemplate;
 
     @Value("${jwt.refresh-token-expire-time}")
     private long refreshTokenExpireTime;
+
 
     @Transactional
     public void signUp(SignUpRequestDTO requestDTO) {
@@ -54,6 +59,7 @@ public class UserService {
 
         String access = jwtProvider.generateAccessToken(user.getUserId());
         String refresh = jwtProvider.generateRefreshToken(user.getUserId());
+
 
         //Redis에 저장
         String redisKey = "refresh:" + user.getUserId();
@@ -109,6 +115,5 @@ public class UserService {
 
         user.delete(); //soft delete
     }
-
 
 }

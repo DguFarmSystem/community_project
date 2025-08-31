@@ -15,6 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
@@ -34,6 +35,7 @@ public class UserController {
         SignInResponseDTO response = userService.signIn(requestDTO);
         return ResponseEntity.ok(CommonResponse.success(response));
     }
+
 
     @PostMapping("/reissue")
     public ResponseEntity<CommonResponse<?>> reissue(@RequestBody ReissueRequestDTO requestDTO) {
@@ -57,7 +59,6 @@ public class UserController {
                 CommonResponse.success("회원 탈퇴가 완료되었습니다.", null)
         );
     }
-
 
 
 }
