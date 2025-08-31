@@ -39,14 +39,16 @@ export default function BoardPage() {
 
       {/* 하단 내비게이션 바 */}
       <nav className={styles.bottomNav}>
-        <button className={styles.navButton}>
+        <Link href="/board" className={styles.navButton}>
           <span className={styles.navIcon}>📌</span>
           <span>Post</span>
-        </button>
-        <button className={styles.navButton}>
+        </Link>
+  
+        <Link href="/mypage" className={styles.navButton}>
           <span className={styles.navIcon}>👤</span>
           <span>Mypage</span>
-        </button>
+        </Link>
+ 
         <Link href="/board/write" className={styles.navButton}>
           <span className={styles.navIcon}>✏️</span>
         </Link>
