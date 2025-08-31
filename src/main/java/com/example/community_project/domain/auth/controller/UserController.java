@@ -1,5 +1,6 @@
 package com.example.community_project.domain.auth.controller;
 
+import com.example.community_project.domain.auth.dto.request.ReissueRequestDTO;
 import com.example.community_project.domain.auth.dto.request.SignInRequestDTO;
 import com.example.community_project.domain.auth.dto.request.SignUpRequestDTO;
 import com.example.community_project.domain.auth.dto.response.SignInResponseDTO;
@@ -34,6 +35,19 @@ public class UserController {
         return ResponseEntity.ok(CommonResponse.success(response));
     }
 
+    @PostMapping("/reissue")
+    public ResponseEntity<CommonResponse<?>> reissue(@RequestBody ReissueRequestDTO requestDTO) {
+        SignInResponseDTO response = userService.reissue(requestDTO);
+        return ResponseEntity.ok(CommonResponse.success(response));
+    }
+
+
+    @PostMapping("/logout")
+    public ResponseEntity<CommonResponse<?>> logout(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        userService.logout(userDetails.getUserId());
+        return ResponseEntity.ok(CommonResponse.success("로그아웃 되었습니다.", null));
+    }
+
     @DeleteMapping
     public ResponseEntity<CommonResponse<Void>> softDeleteUser(@AuthenticationPrincipal CustomUserDetails userDetails) {
         Long userId = userDetails.getUserId();
@@ -44,12 +58,6 @@ public class UserController {
         );
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<CommonResponse<TestDTO>> getMyName(@AuthenticationPrincipal CustomUserDetails userDetails) {
-        Long userId = userDetails.getUserId();
-        TestDTO response = userService.getMyName(userId);
 
-        return ResponseEntity.ok(CommonResponse.success(response));
-    }
 
 }
