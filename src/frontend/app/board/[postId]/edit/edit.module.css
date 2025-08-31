@@ -1,66 +1,75 @@
 /* frontend/app/board/[postId]/edit/edit.module.css */
 
-.container {
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3); /* 모달 뒷배경의 투명도를 조절하여 블러 효과와 함께 보이게 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.blurryBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px); /* 배경 블러 효과 */
+  z-index: 999; /* 모달 콘텐츠 아래에 위치 */
+  /* 여기에 게시글 상세 페이지의 내용이 들어가고 블러 처리됩니다. */
+  /* 예를 들어, post.module.css의 pageContainer 스타일을 여기에 적용하거나, */
+  /* 해당 컴포넌트를 직접 렌더링하고 여기에 블러 효과를 적용할 수 있습니다. */
+  /* 현재는 전체 화면에 블러를 적용하기 위한 컨테이너 역할입니다. */
+  background-color: #f5f5f5; /* 기본 배경색 (post detail 페이지의 배경색과 유사하게) */
+}
+
+/* 실제 게시글 조회 페이지의 스타일을 가져와서 블러 배경에 적용하면 좋습니다. */
+/* 여기서는 edit.module.css 내에서 blur 처리를 위한 컨테이너 역할만 합니다. */
+/* 실제 게시글 내용은 edit/page.js에서 postStyles를 이용해 렌더링하고, */
+/* 그 컨테이너에 blurryBackground 클래스를 적용하여 블러 처리합니다. */
+
+
+.modalContent {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* 모달 오버레이 위에 표시 */
+  width: 90%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-family: sans-serif;
-  padding: 1rem;
-  padding-bottom: 60px;
+  gap: 1rem;
 }
 
-.title {
+.modalTitle {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.postInfo {
-  font-size: 0.8rem;
-  color: #777;
-  margin-bottom: 1rem;
-}
-
-.author {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.postContent {
-  line-height: 1.6;
-  color: #444;
-}
-
-.divider {
-  width: 100%;
-  border: 0;
-  border-top: 1px solid #eee;
-  margin: 2rem 0;
+  text-align: center;
+  color: #388e3c;
+  margin-bottom: 1.5rem;
 }
 
 .passwordForm, .editForm {
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1rem;
 }
 
 .label {
   align-self: flex-start;
-  margin-bottom: 0.5rem;
-  color: #555;
   font-weight: bold;
+  color: #555;
 }
 
 .input, .textarea {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -69,57 +78,33 @@
   resize: vertical;
 }
 
-.submitButton, .saveButton {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
 .errorText {
   color: #dc3545;
   font-size: 0.8rem;
-  margin-top: -0.5rem;
-  margin-bottom: 1rem;
+  text-align: center;
 }
 
-/* --- 하단 내비게이션 바 스타일 --- */
-.bottomNav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #f8f8f8;
-  border-top: 1px solid #e0e0e0;
+.modalActions {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: flex-end; /* 버튼들을 오른쪽으로 정렬 */
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.navButton {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  color: #555;
-  text-decoration: none;
-  font-size: 0.8rem;
-  background: none;
+.submitButton, .saveButton, .cancelButton {
+  padding: 0.75rem 1.5rem;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
-.navButton:hover {
-  color: #388e3c;
+.submitButton, .saveButton {
+  background-color: #4caf50;
+  color: white;
 }
 
-.navIcon {
-  font-size: 1.5rem;
+.cancelButton {
+  background-color: #ccc;
+  color: #333;
 }
