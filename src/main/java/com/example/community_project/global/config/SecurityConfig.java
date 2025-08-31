@@ -34,9 +34,11 @@ public class SecurityConfig {
 
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/signup", "/api/auth/signin", "/error", "/v3/api-docs/**",
+
+                        .requestMatchers("/api/auth/signup", "/api/auth/signin", "/api/auth/reissue", "/error", "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html").permitAll()  //회원가입, 로그인은 인증 없이 접근가능
+
                         .anyRequest().authenticated() //나머지 API는 모두 인증 필요
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
