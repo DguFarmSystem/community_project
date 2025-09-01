@@ -23,11 +23,11 @@ public class PostLike {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name="post_id", nullable = false)
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="post_id", nullable = false)
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
     @Column(nullable = false)
