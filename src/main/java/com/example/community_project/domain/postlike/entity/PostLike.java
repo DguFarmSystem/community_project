@@ -5,7 +5,6 @@ import com.example.community_project.domain.post.entity.Post;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -37,6 +36,7 @@ public class PostLike {
     public PostLike(User user, Post post) {
         this.user = user;
         this.post = post;
+        this.createdAt = LocalDateTime.now();
     }
 
     public void onCreate() {

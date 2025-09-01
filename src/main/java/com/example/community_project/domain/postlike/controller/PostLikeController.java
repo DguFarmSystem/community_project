@@ -19,7 +19,7 @@ public class PostLikeController {
     @GetMapping("/{postId}/like")
     public ResponseEntity<PostLikeResponseDto> checkLikeStatus(
             @PathVariable Long postId,
-            @AuthenticationPrincipal Long userId
+            @AuthenticationPrincipal(expression = "userId") Long userId
     ) {
         // "좋아요" 여부와 게시글으 "좋아요" 개수를 data 객체로 받아옴.
         PostLikeResponseDto.Data data = postLikeService.checkLikeStatus(postId, userId);
@@ -39,7 +39,7 @@ public class PostLikeController {
     @PostMapping("/{postId}/like")
     public ResponseEntity<PostLikeResponseDto> toggleLike(
             @PathVariable long postId,
-            @AuthenticationPrincipal Long userId
+            @AuthenticationPrincipal(expression = "userId") Long userId
     ){
         // 토글 후 결과를 data 객체로 가져오기
         PostLikeResponseDto.Data data = postLikeService.toggleLike(postId, userId);

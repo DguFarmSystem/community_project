@@ -39,4 +39,11 @@ public class User {
         return user;
     }
 
+    public void changeData(String name) {
+        this.name = name;
+    }
+
+    public void changePassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 }
