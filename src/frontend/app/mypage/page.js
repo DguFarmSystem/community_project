@@ -87,7 +87,7 @@ export default function MyPage() {
         <button onClick={() => setShowDeleteModal(true)} className={styles.menuItem}>회원 탈퇴</button>
       </div>
 
-      <h2 className={styles.listTitle}>내가 쓴 게시글</h2>
+      <h2 className={styles.listTitle}>내가 작성한ㄴ 게시글</h2>
       <div className={styles.postList}>
         {myPosts.length > 0 ? (
           myPosts.map(post => (
@@ -103,9 +103,8 @@ export default function MyPage() {
         )}
       </div>
 
-      {/* 내가 쓴 댓글 목록 섹션 추가 */}
-      <h2 className={styles.listTitle}>내가 쓴 댓글</h2>
-      <div className={styles.postList}> {/* 게시글과 동일한 스타일을 사용 */}
+      <h2 className={styles.listTitle}>내가 작성한 댓글</h2>
+      <div className={styles.postList}>
         {myComments.length > 0 ? (
           myComments.map(comment => (
             <div key={comment.id} className={styles.commentCard}> {/* 새로운 댓글 스타일 사용 */}
