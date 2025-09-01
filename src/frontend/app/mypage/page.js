@@ -7,20 +7,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import styles from './mypage.module.css';
 
+// 임시 사용자 정보
 const currentUser = {
   username: '작성자1',
   name: '홍길동',
   password: '111'
 };
 
+// 임시 게시글 데이터
 const allPosts = [
   { id: 1, title: '첫 번째 게시글입니다', author: '작성자1', date: '2025.08.29' },
   { id: 2, title: '잘 부탁드립니다~!', author: '작성자2', date: '2025.08.28' },
   { id: 3, title: '안녕하세요! 반갑습니다', author: '작성자1', date: '2025.08.27' },
+  { id: 4, title: '익명으로 쓴 글입니다', author: '익명', date: '2025.08.26' },
 ];
 
 export default function MyPage() {
   const router = useRouter();
+  
+  // 현재 사용자의 아이디와 게시글 작성자의 아이디가 일치하는 경우만 필터링합니다.
   const myPosts = allPosts.filter(post => post.author === currentUser.username);
   
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -46,8 +51,8 @@ export default function MyPage() {
 
   return (
     <div className={styles.pageContainer}>
-      <h1 className={styles.pageTitle}>Farm System Community</h1>
-      <h2 className={styles.subTitle}>MY PAGE</h2>
+      <h1 className={styles.subTitle}>Farm System Community</h1>
+      <h2 className={styles.pageTitle}>MY PAGE</h2>
 
       <div className={styles.profileSection}>
         <div className={styles.profileAvatar}>
@@ -86,7 +91,7 @@ export default function MyPage() {
             </div>
           ))
         ) : (
-          <p>작성한 게시글이 없습니다.</p>
+          <p className={styles.noPostText}>작성한 게시글이 없습니다.</p>
         )}
       </div>
       

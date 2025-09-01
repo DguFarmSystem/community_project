@@ -15,7 +15,7 @@
   text-align: center;
   color: #388e3c;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
 
 .subTitle {
@@ -23,7 +23,6 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: #388e3c;
-  margin-bottom: 2rem;
 }
 
 .profileSection {
@@ -245,4 +244,56 @@
 
 .navIcon {
   font-size: 1.5rem;
+}
+.listTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.noPostText {
+  color: #777;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.postCard {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.postLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.postTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.postDate {
+  font-size: 0.8rem;
+  color: #777;
+  margin: 0;
 }
