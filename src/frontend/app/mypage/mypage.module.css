@@ -297,3 +297,29 @@
   color: #777;
   margin: 0;
 }
+
+.commentCard {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.commentLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.commentText {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.commentDate {
+  font-size: 0.8rem;
+  color: #777;
+  margin: 0;
+}

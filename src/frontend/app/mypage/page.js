@@ -22,11 +22,19 @@ const allPosts = [
   { id: 4, title: '익명으로 쓴 글입니다', author: '익명', date: '2025.08.26' },
 ];
 
+// 임시 댓글 데이터 추가
+const allComments = [
+  { id: 1, postId: 1, text: '첫 번째 게시글에 대한 댓글입니다.', author: '작성자1', date: '2025.08.29' },
+  { id: 2, postId: 2, text: '반갑습니다!', author: '작성자2', date: '2025.08.28' },
+  { id: 3, postId: 3, text: '좋은 글이네요.', author: '작성자1', date: '2025.08.27' },
+  { id: 4, postId: 4, text: '익명으로 쓴 댓글입니다.', author: '익명', date: '2025.08.26' },
+];
+
 export default function MyPage() {
   const router = useRouter();
   
-  // 현재 사용자의 아이디와 게시글 작성자의 아이디가 일치하는 경우만 필터링합니다.
   const myPosts = allPosts.filter(post => post.author === currentUser.username);
+  const myComments = allComments.filter(comment => comment.author === currentUser.username);
   
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deletePassword, setDeletePassword] = useState('');
@@ -51,8 +59,8 @@ export default function MyPage() {
 
   return (
     <div className={styles.pageContainer}>
-      <h1 className={styles.subTitle}>Farm System Community</h1>
-      <h2 className={styles.pageTitle}>MY PAGE</h2>
+      <h1 className={styles.pageTitle}>Farm System Community</h1>
+      <h2 className={styles.subTitle}>MY PAGE</h2>
 
       <div className={styles.profileSection}>
         <div className={styles.profileAvatar}>
@@ -92,6 +100,23 @@ export default function MyPage() {
           ))
         ) : (
           <p className={styles.noPostText}>작성한 게시글이 없습니다.</p>
+        )}
+      </div>
+
+      {/* 내가 쓴 댓글 목록 섹션 추가 */}
+      <h2 className={styles.listTitle}>내가 쓴 댓글</h2>
+      <div className={styles.postList}> {/* 게시글과 동일한 스타일을 사용 */}
+        {myComments.length > 0 ? (
+          myComments.map(comment => (
+            <div key={comment.id} className={styles.commentCard}> {/* 새로운 댓글 스타일 사용 */}
+              <Link href={`/board/${comment.postId}`} className={styles.commentLink}>
+                <p className={styles.commentText}>{comment.text}</p>
+                <p className={styles.commentDate}>{comment.date}</p>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p className={styles.noPostText}>작성한 댓글이 없습니다.</p>
         )}
       </div>
       
