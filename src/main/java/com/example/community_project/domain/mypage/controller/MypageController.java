@@ -21,7 +21,7 @@ public class MypageController {
     // 마이페이지 조회
     @GetMapping
     public ResponseEntity<MypageResponseDto> getMypageData(
-            @AuthenticationPrincipal long userId
+            @AuthenticationPrincipal(expression = "userId") long userId
     ) {
         MypageResponseDto mypageResponseDto = MypageResponseDto.builder()
                 .status(HttpStatus.OK.value())
@@ -36,7 +36,7 @@ public class MypageController {
     @PatchMapping
     public ResponseEntity<MypageResponseDto> updateMypageData(
             @RequestBody MypageDataChangeRequestDto mypageDataChangeRequestDto,
-            @AuthenticationPrincipal long userId
+            @AuthenticationPrincipal(expression = "userId") long userId
     ) {
         MypageResponseDto.MypageData mypageData = mypageService.changeMypageData(userId, mypageDataChangeRequestDto);
 
@@ -53,7 +53,7 @@ public class MypageController {
     @PatchMapping("/password")
     public ResponseEntity<MypageResponseDto> changePassword(
             @RequestBody PasswordChangeRequestDto passwordChangeRequestDto,
-            @AuthenticationPrincipal long userId
+            @AuthenticationPrincipal(expression = "userId") long userId
     ) {
         boolean result = mypageService.changePassword(userId, passwordChangeRequestDto);
 

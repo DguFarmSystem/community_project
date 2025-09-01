@@ -5,6 +5,7 @@ import com.example.community_project.domain.auth.repository.UserRepository;
 import com.example.community_project.domain.mypage.dto.request.MypageDataChangeRequestDto;
 import com.example.community_project.domain.mypage.dto.request.PasswordChangeRequestDto;
 import com.example.community_project.domain.mypage.dto.response.MypageResponseDto;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class MypageService {
         return data;
     }
 
+    @Transactional
     public MypageResponseDto.MypageData changeMypageData(Long userId, MypageDataChangeRequestDto mypageDataChangeRequestDto) {
         // 유저 객체 찾기
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("회원이 존재하지 않습니다."));
@@ -45,6 +47,7 @@ public class MypageService {
         return data;
     }
 
+    @Transactional
     public boolean changePassword(Long userId, PasswordChangeRequestDto passwordChangeRequestDto) {
         // 유저 객체 찾기
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("회원이 존재하지 않습니다."));
@@ -56,7 +59,7 @@ public class MypageService {
 
         // 비밀번호 변경
         try {
-            user.changePassword(passwordEncoder.encode(passwordChangeRequestDto.getCurrentPassword()));
+            user.changePassword(passwordEncoder.encode(passwordChangeRequestDto.getNewPassword()));
             return true;
         } catch (Exception e) {
             return false;
