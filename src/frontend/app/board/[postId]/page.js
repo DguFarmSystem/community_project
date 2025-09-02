@@ -5,13 +5,18 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import styles from './post.module.css';
 
-// 임시 게시글 데이터 (비밀번호 포함)
+const currentUser = {
+  username: '작성자1',
+};
+
+// 임시 게시글 데이터
 const posts = [
-  { id: '1', title: '첫 번째 게시글입니다', content: '이곳은 커뮤니티 게시물의 내용이 입력됩니다. 최대 N자까지 작성 가능합니다.', author: '작성자1', password: '111', date: '2025.08.29', likes: 12, comments: 3 },
-  { id: '2', title: '커뮤니티 이용 안내', content: '이곳은 커뮤니티 게시물의 내용이 입력됩니다.', author: '관리자', password: '222', date: '2025.08.28', likes: 25, comments: 8 },
-  { id: '3', title: '안녕하세요! 반갑습니다', content: '이곳은 커뮤니티 게시물의 내용이 입력됩니다.', author: '익명', password: '333', date: '2025.08.27', likes: 8, comments: 1 },
+  { id: '1', title: '첫 번째 게시글입니다', content: '이곳은 커뮤니티 게시물의 내용이 입력됩니다. 최대 N자까지 작성 가능합니다.', author: '작성자1', password: '111', date: '2025.08.29', likes: 12, comments: 3, likedBy: ['작성자1', '작성자3'] },
+  { id: '2', title: '커뮤니티 이용 안내', content: '이곳은 커뮤니티 게시물의 내용이 입력됩니다.', author: '관리자', password: '222', date: '2025.08.28', likes: 25, comments: 8, likedBy: ['작성자1', '관리자'] },
+  { id: '3', title: '안녕하세요! 반갑습니다', content: '이곳은 커뮤니티 게시물의 내용이 입력됩니다.', author: '익명', password: '333', date: '2025.08.27', likes: 8, comments: 1, likedBy: ['작성자2'] },
 ];
 
+// 임시 댓글 데이터
 const comments = [
   { id: 1, author: '댓글작성자1', content: '이 게시글 정말 유익하네요!', date: '2025.08.29' },
   { id: 2, author: '댓글작성자2', content: '저도 같은 생각입니다.', date: '2025.08.29' },
@@ -22,7 +27,8 @@ export default function PostDetailPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deletePassword, setDeletePassword] = useState('');
   const [deleteError, setDeleteError] = useState('');
-  
+  const [showLikedByModal, setShowLikedByModal] = useState(false);
+
   const params = useParams();
   const router = useRouter();
   const postId = params.postId;
@@ -33,17 +39,39 @@ export default function PostDetailPage() {
     return <div className={styles.pageContainer}>게시글을 찾을 수 없습니다.</div>;
   }
 
+// 좋아요 상태 관리
+  const [isLiked, setIsLiked] = useState(post.likedBy.includes(currentUser.username));
+  const [likeCount, setLikeCount] = useState(post.likes);
+
   const handleDelete = (e) => {
     e.preventDefault();
     setDeleteError('');
-
-    if (deletePassword === post.password) {
+    const inputPassword = prompt('게시글을 삭제하려면 비밀번호를 입력하세요.');
+    
+    if (inputPassword === post.password) {
       console.log(`게시글 ${postId} 삭제 완료!`);
       alert('게시글이 성공적으로 삭제되었습니다.');
       router.push('/board');
     } else {
-      setDeleteError('비밀번호가 일치하지 않습니다.');
+      alert('비밀번호가 일치하지 않습니다.');
     }
+  };
+
+  const handleLike = () => {
+    if (isLiked) {
+      // 좋아요 취소
+      setLikeCount(likeCount - 1);
+      alert('좋아요를 취소했습니다.');
+    } else {
+      // 좋아요
+      setLikeCount(likeCount + 1);
+      alert('좋아요를 눌렀습니다.');
+    }
+    setIsLiked(!isLiked);
+  };
+
+  const toggleLikedByModal = () => {
+    setShowLikedByModal(!showLikedByModal);
   };
 
   return (
@@ -58,7 +86,7 @@ export default function PostDetailPage() {
               수정
             </Link>
             <span className={styles.separator}>|</span>
-            <button onClick={() => setShowDeleteModal(true)} className={styles.actionButton}>
+            <button onClick={handleDelete} className={styles.actionButton}>
               삭제
             </button>
           </div>
@@ -68,8 +96,15 @@ export default function PostDetailPage() {
       <div className={styles.content}>
         <p className={styles.postText}>{post.content}</p>
         <div className={styles.stats}>
-          <span>❤️ 좋아요 {post.likes}</span>
-          <span>💬 댓글 {post.comments}</span>
+          <button onClick={handleLike} className={styles.likeButton}>
+            <span style={{ color: isLiked ? 'red' : 'gray' }}>❤️</span> 좋아요 {likeCount}
+          </button>
+
+          <button onClick={toggleLikedByModal} className={styles.plusButton}>
+          더보기
+          </button>
+
+          <span> 💬 댓글 {post.comments}</span>
         </div>
       </div>
 
@@ -108,6 +143,24 @@ export default function PostDetailPage() {
               <button type="button" onClick={() => setShowDeleteModal(false)} className={styles.cancelButton}>취소</button>
             </div>
           </form>
+        </div>
+      )}
+
+      {showLikedByModal && (
+        <div className={styles.likedByModalOverlay}>
+          <div className={styles.likedByModal}>
+            <h3 className={styles.modalTitle}>이 게시글을 좋아하는 사람</h3>
+            <ul className={styles.likedByList}>
+              {post.likedBy.length > 0 ? (
+                post.likedBy.map((user, index) => (
+                  <li key={index} className={styles.likedByItem}>{user}</li>
+                ))
+              ) : (
+                <li>좋아요를 누른 사람이 없습니다.</li>
+              )}
+            </ul>
+            <button onClick={toggleLikedByModal} className={styles.modalCloseButton}>닫기</button>
+          </div>
         </div>
       )}
 
