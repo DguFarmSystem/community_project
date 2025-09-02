@@ -87,7 +87,7 @@ export default function MyPage() {
         <button onClick={() => setShowDeleteModal(true)} className={styles.menuItem}>회원 탈퇴</button>
       </div>
 
-      <h2 className={styles.listTitle}>내가 작성한ㄴ 게시글</h2>
+      <h2 className={styles.listTitle}>내가 작성한 게시글</h2>
       <div className={styles.postList}>
         {myPosts.length > 0 ? (
           myPosts.map(post => (
