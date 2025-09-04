@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import styles from './post.module.css';
@@ -17,7 +17,7 @@ const posts = [
 ];
 
 // 임시 댓글 데이터
-const comments = [
+const initialComments = [
   { id: 1, author: '댓글작성자1', content: '이 게시글 정말 유익하네요!', date: '2025.08.29' },
   { id: 2, author: '댓글작성자2', content: '저도 같은 생각입니다.', date: '2025.08.29' },
   { id: 3, author: '댓글작성자3', content: '좋은 글 감사합니다.', date: '2025.08.29' },
@@ -28,6 +28,9 @@ export default function PostDetailPage() {
   const [deletePassword, setDeletePassword] = useState('');
   const [deleteError, setDeleteError] = useState('');
   const [showLikedByModal, setShowLikedByModal] = useState(false);
+
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState(initialComments);
 
   const params = useParams();
   const router = useRouter();
@@ -74,6 +77,22 @@ export default function PostDetailPage() {
     setShowLikedByModal(!showLikedByModal);
   };
 
+  // 댓글 제출 함수
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    if (commentText.trim() === '') return;
+
+    const newComment = {
+      id: comments.length + 1,
+      author: currentUser.username,
+      content: commentText,
+      date: '2025.09.02',
+    };
+
+    setComments([...comments, newComment]);
+    setCommentText('');
+  };
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.header}>
@@ -96,7 +115,7 @@ export default function PostDetailPage() {
       <div className={styles.content}>
         <p className={styles.postText}>{post.content}</p>
         <div className={styles.stats}>
-          <button onClick={handleLike} className={styles.likeButton}>
+          <button onClick={handleLike} className={styles.likeInfo}>
             <span style={{ color: isLiked ? 'red' : 'gray' }}>❤️</span> 좋아요 {likeCount}
           </button>
 
@@ -104,7 +123,7 @@ export default function PostDetailPage() {
           더보기
           </button>
 
-          <span> 💬 댓글 {post.comments}</span>
+          <span className={styles.commentCount}> 💬 댓글 {post.comments}</span>
         </div>
       </div>
 
@@ -122,11 +141,17 @@ export default function PostDetailPage() {
         ))}
       </div>
 
-      <div className={styles.commentInputBox}>
-        <input type="text" placeholder="댓글을 입력하세요" className={styles.commentInput} />
-        <button className={styles.sendButton}>➤</button>
-      </div>
-
+      <form onSubmit={handleCommentSubmit} className={styles.commentForm}>
+        <input 
+          type="text" 
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
+          placeholder="댓글을 입력하세요" 
+          className={styles.commentInputField} 
+        />
+        <button type="submit" className={styles.sendButton}>등록</button>
+      </form>
+      
       {showDeleteModal && (
         <div className={styles.deleteModalOverlay}>
           <form onSubmit={handleDelete} className={styles.deleteModal}>
